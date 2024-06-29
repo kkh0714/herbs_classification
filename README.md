@@ -16,9 +16,7 @@ We then divided them into categories as follows: Keith and Chris handled 7 categ
 
 For each herb category, a minimum of 50 images were captured from various perspectives to ensure a variety of images and a comprehensive representation. Specifically, 8 images were taken from each of the following views: side, elevated, elevated with zoom, and side with zoom. Additionally, 4 images were captured from a top view, and 15 images focused solely on single leaves. Figure 1 demonstrates the image variety of image production for this project. 
 
-![image-20240629124921328](/Users/keith/Library/Application Support/typora-user-images/image-20240629124921328.png)
-
-​										Figure 1: Image Production of Rosemary and Sorrel 
+![Figure 1: Image Production of Rosemary and Sorrel](docs/fig_1.jpg)
 
 ### 1.3 Herb Categories
 
@@ -45,9 +43,7 @@ The 20 herb categories of this project are shown in Figure 2. They are:
 - Thyme 
 - Verbena
 
- ![image-20240629125134600](/Users/keith/Library/Application Support/typora-user-images/image-20240629125134600.png)
-
-​								Figure 2: Images of 20 herb categories.
+ ![Figure 2: Images of 20 herb categories](docs/fig_2.jpg)
 
  
 
@@ -90,9 +86,7 @@ Overall, the datasets were trained with the 5 pretrained models, employing fine-
 
 The next step was to train and test the models with the extended dataset of 20 categories of herbs but without the new test dataset of different conditions. The model performances can be found in Figure 3:
 
-![image-20240629125410842](/Users/keith/Library/Application Support/typora-user-images/image-20240629125410842.png)	
-
-​										Figure 3: Model performances.
+![Figure 3: Model performances](docs/fig_3.png)	
 
 As a summary, the MobileNetV2 model obtained the highest accuracy, and the ResNet-152 model obtained the lowest accuracy. The MobileNetV2 model was therefore chosen for the rest of the project, with the following settings:
 
@@ -113,27 +107,23 @@ The accuracy of MobileNetV2 decreased from 98.7% to 80.20% with the new testing 
 
 ### 3.2 Classification Results
 
-![Screenshot 2024-05-22 at 12.10.57 PM](/Users/keith/local documents/MQ/COMP8430/Group Project/Screenshot 2024-05-22 at 12.10.57 PM.png)
+![Classification Results](docs/result.png)
 
 ### 3.3 Interesting Findings About Classified and Misclassified Images
 
 In general, the model is capable of effectively classifying all the herbs with only minor misclassifications, except for two categories. A major challenge arises in distinguishing between catnip and catmint.
 
- ![image-20240629125602069](/Users/keith/Library/Application Support/typora-user-images/image-20240629125602069.png)
+ ![Table 1: Results of Catnip being misclassified as Catmint](docs/table_1.png)
 
-​			Table 1: Results of Catnip being misclassified as Catmint
+![Figure 4: Images of Catnip (left) and Catmint (right)](docs/fig_4.png)
 
-![image-20240629125633920](/Users/keith/Library/Application Support/typora-user-images/image-20240629125633920.png)
-
-​									Figure 4: Images of Catnip (left) and Catmint (right)
+​									
 
 As shown in Figure 4, the similar appearance between catnip and catmint makes it difficult to differentiate them, both for the model and the human eye. In Table 1, it displays the number of catnips misclassified as catmints before and after applying data augmentation techniques. In both cases, the model struggles to distinguish catnip and catmint effectively.
 
 Another interesting finding emerged during the project, as depicted in Figure 5, which shows images of fennel taken in both early and later phases.
 
- ![image-20240629125651365](/Users/keith/Library/Application Support/typora-user-images/image-20240629125651365.png)
-
-​			Figure 5: Image of Fennel taken in early phase 2 (left) and later phase 4 (right)
+ ![Figure 5: Image of Fennel taken in early phase 2 (left) and later phase 4 (right)](docs/fig_5.png)		
 
 In the later phase 4, the fennel is obviously withered, with significant changes in colour and shape. Despite these changes, MobileNetV2 was still able to classify the fennel effectively and accurately. This demonstrates the model's capability to recognize objects with distinct changes in appearance, although it struggles with objects that have similar appearances.  
 
@@ -143,9 +133,7 @@ As the accuracy of the model decreased to 80.2% for the new testing dataset with
 
 Since the new dataset with different conditions is basically showing the same plants that we just used in simple conditions before, we decided that fine-tuning the augmentation techniques would give us a good chance of increasing the model’s performance. Therefore, we individually tested the following augmentation techniques and compared the results which are shown in table 2.
 
- ![image-20240629125711041](/Users/keith/Library/Application Support/typora-user-images/image-20240629125711041.png)
-
-​								Table 2: Augmentation techniques in comparison
+ ![Table 2: Augmentation techniques in comparison](docs/table_2.png)
 
 Compared with the starting point without new augmentation techniques and an accuracy of 80.2%, the first 8 augmentation configurations performed either worse or just as good as this baseline. Therefore, we applied our knowledge about the new testing dataset in comparison to the original one. Since the plants did not change but the light conditions, we experimented with the ColorJitter augmentation technique and the fine-tuned hyperparameters (brightness = 0.3, contrast 0.4) resulted in an increase of the model’s performance to 81.22%. 
 
